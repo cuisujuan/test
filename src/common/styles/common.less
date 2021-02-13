@@ -1,0 +1,35 @@
+// reset css
+@import "~@vdian/reset/lib/less/index.less";
+// rpx 基准库
+@import "~@vdian/sheer/lib/index.css";
+
+html,body{
+    margin:0 auto;
+}
+// 多行省略
+.util__multi-line-ellipsis(@line: 1) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+.util__one-px-border(@border-direction: border, @border-color, @border-style: solid, @border-radius: 0) {
+    position: relative;
+    @{border-direction}: none;
+    border-radius: @border-radius;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        border-radius: @border-radius;
+        @{border-direction}: 1px @border-style @border-color;
+    }
+}
